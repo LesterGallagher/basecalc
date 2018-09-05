@@ -1,0 +1,28 @@
+.body {
+    background-color: #ddd;
+}
+
+
+.container {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 15px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.baseNumber, #baseNumber {
+    z-index: 2;
+    min-width: 20px;
+}
+
+.dropdown-item {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-item ons-button {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    text-align: left;
+}
