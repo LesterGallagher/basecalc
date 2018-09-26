@@ -10,24 +10,61 @@
         style-src 'self' 'unsafe-inline' https://*.gstatic.com;
         media-src *; 
         font-src 'self' https://*.gstatic.com;
-        img-src 'self' https://*.gstatic.com data: content:;
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.gstatic.com;
+        img-src 'self' https://*.gstatic.com https://www.google-analytics.com data: content:;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com https://*.gstatic.com https://www.googletagmanager.com;
         connect-src 'self' https://*.gstatic.com;">
 
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#2b5797">
+
+    <meta name="apple-mobile-web-app-title" content="OV Fiets App">
+    <meta name="application-name" content="OV Fiets App">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-navbutton-color" content="#f7c613">
+    <meta name="theme-color" content="#f7c613">
+    <meta name="description" content="This app lets you convert a number to another base. The application provides four default output numbers (hexadecimal, octal, binary and decimal). You can change the input base to a custom any custom amount for example base36.">
+    <meta name="author" content="Sem Postma, sem.postma@gmail.com">
+    <meta name="keywords" content="Google Play, Numeral, Base, Converter, Octal, Decimal, Hexadecimal, Base36">
+
+    <meta property="og:title" content="Numeric Calculator">
+    <meta property="og:description" content="This app lets you convert a number to another base. The application provides four default output numbers (hexadecimal, octal, binary and decimal). You can change the input base to a custom any custom amount for example base36.">
+    <link rel="canonical" href="https://esstudio.site/">
+    <meta property="og:url" content="/">
+    <meta property="og:site_name" content="Echo Sierra Studio">
+    <script type="application/ld+json">
+  {"name":"Echo Sierra Studio","image":"https://numeric-calculator.esstudio.site/images/image_src.png","description":"This app lets you convert a number to another base. The application provides four default output numbers (hexadecimal, octal, binary and decimal). You can change the input base to a custom any custom amount for example base36.","author":{"@type":"Person","name":"Sem Postma"},"@type":"WebSite","url":"numeric-calculator.esstudio.site","headline":"Work","@context":"http://schema.org"}</script>
+    <meta property="og:image" content="https://numeric-calculator.esstudio.site/images/image_src.png">
+    <link rel="image_src" href="https://numeric-calculator.esstudio.site/images/image_src.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#f28227">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#f28227">
+    <meta name="msapplication-config" content="./browserconfig.xml">
+    <meta name="theme-color" content="#cc7025">
+
+    <meta name="eced0146b6f8cf7" content="ea3449bebad31ba871781a0c64f98de5" />
+
     <script src="cordova.js"></script>
-    <script src="scripts/index.js"></script>
     <script src="scripts/platformOverrides.js"></script>
-
-
     <script src="lib/jquery/jquery-3.2.1.min.js"></script>
-
     <script src="lib/onsen/js/onsenui.min.js"></script>
-    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
-    <link id="onsen-theme" rel="stylesheet" href="lib/onsen/css/onsen-css-components.min.css">
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.min.css">
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.min.css">
 
     <link href="css/index.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -47,7 +84,8 @@
     <ons-page>
         <ons-toolbar id="toolbar">
             <div class="left">
-                <ons-toolbar-button style="display:none"><!-- !!!! display is set to none
+                <ons-toolbar-button style="display:none">
+                    <!-- !!!! display is set to none
                                                                     dont forget. -->
                     <ons-icon icon="ion-android-more-vertical">
                     </ons-icon>
@@ -62,13 +100,23 @@
             </div>
         </ons-toolbar>
 
+        <ons-card>
+            <div class="title">
+                <b>Base Converter</b>
+            </div>
+            <div class="content">
+                This app lets you convert a number to another base. The application provides four default output
+                numbers (hexadecimal, octal, binary and decimal). You can change the input base to a custom any custom
+                amount for example base36
+            </div>
+        </ons-card>
         <div class="container">
             <ons-list modifier="inset" nodivider>
                 <ons-list-item>
                     <div class="left">
                         <p><b>Number:
-                            <ons-input id="number" modifier="material" type="number" value="42" step="1"></ons-input>
-                        </b></p>
+                                <ons-input id="number" modifier="material" type="text" value="42" step="1"></ons-input>
+                            </b></p>
                     </div>
                     <div class="right" style="min-width: 48vw">
                         <p>Base:&nbsp&nbsp
@@ -78,7 +126,8 @@
                                 </ons-button>
                             </div>
                             <div class="center" style="text-align: center;">
-                                <ons-input id="rootBase" class="baseNumber" modifier="large" type="number" min="2" value="10" step="1" max="36"></ons-input>
+                                <ons-input id="rootBase" class="baseNumber" modifier="large" type="number" min="2"
+                                    value="10" step="1" max="36"></ons-input>
                             </div>
                             <div class="right">
                                 <ons-button class="inc">
@@ -98,7 +147,8 @@
                         <ons-list-item>
                             <p><b>Hexadecimal (16):</b>
                                 <div class="center">
-                                    <ons-input style="display: none" class="baseNumber" modifier="large" type="number" min="2" value="16" step="1" max="36"></ons-input>
+                                    <ons-input style="display: none" class="baseNumber" modifier="large" type="number"
+                                        min="2" value="16" step="1" max="36"></ons-input>
                                 </div>
                             </p>
                         </ons-list-item>
@@ -116,7 +166,8 @@
                         <ons-list-item>
                             <p><b>Octal (8):</b>
                                 <div class="center">
-                                    <ons-input style="display: none" class="baseNumber" modifier="large" type="number" min="2" value="8" step="1" max="36"></ons-input>
+                                    <ons-input style="display: none" class="baseNumber" modifier="large" type="number"
+                                        min="2" value="8" step="1" max="36"></ons-input>
                                 </div>
                             </p>
                         </ons-list-item>
@@ -134,40 +185,57 @@
             <ons-col width="50%">
                 <div class="container" style="margin-top: 0">
                     <ons-list modifier="inset" noborder>
-                            <ons-list-item>
-                                <p><b>Binary (2):</b>
-                                    <div class="center">
-                                        <ons-input style="display: none" class="baseNumber" modifier="large" type="number" min="2" value="2" step="1" max="36"></ons-input>
-                                    </div>
-                                </p>
-                            </ons-list-item>
-                            <ons-list-item>
-                                <div class="resultNumber">
-
+                        <ons-list-item>
+                            <p><b>Binary (2):</b>
+                                <div class="center">
+                                    <ons-input style="display: none" class="baseNumber" modifier="large" type="number"
+                                        min="2" value="2" step="1" max="36"></ons-input>
                                 </div>
-                            </ons-list-item>
-                        </ons-list>
+                            </p>
+                        </ons-list-item>
+                        <ons-list-item>
+                            <div class="resultNumber">
+
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
                 </div>
             </ons-col>
             <ons-col width="50%">
                 <div class="container" style="margin-top: 0">
                     <ons-list modifier="inset" noborder>
 
-                            <ons-list-item>
-                                <b>Decimal (10):</b>
-                                    <div class="center">
-                                        <ons-input style="display: none" class="baseNumber" modifier="large" type="number" min="2" value="10" step="1" max="36"></ons-input>
-                                    </div>
-                            </ons-list-item>
-                            <ons-list-item>
-                                <div class="resultNumber">
+                        <ons-list-item>
+                            <b>Decimal (10):</b>
+                            <div class="center">
+                                <ons-input style="display: none" class="baseNumber" modifier="large" type="number" min="2"
+                                    value="10" step="1" max="36"></ons-input>
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item>
+                            <div class="resultNumber">
 
-                                </div>
-                            </ons-list-item>
-                        </ons-list>
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
                 </div>
             </ons-col>
         </ons-row>
+
+        <ons-card>
+            <div class="content">
+                <ul class="social-media-list">
+                    <li><a target="_blank" title="dribbble" aria-label="dribbble" href="https://dribbble.com/es_studio"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#dribbble"></use></svg> <span class="username">es_studio</span></a></li>
+                    <li><a target="_blank" title="facebook" aria-label="facebook" href="https://www.facebook.com/ES-Studio-2052606714783317"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#facebook"></use></svg> <span class="username">ES-Studio-2052606714783317</span></a></li>
+                    <li><a target="_blank" title="flickr" aria-label="flickr" href="https://www.flickr.com/photos/es_studio"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#flickr"></use></svg> <span class="username">es_studio</span></a></li>
+                    <li><a target="_blank" title="github" aria-label="github" href="https://github.com/LesterGallagher"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#github"></use></svg> <span class="username">LesterGallagher</span></a></li>
+                    <li><a target="_blank" title="pinterest" aria-label="pinterest" href="https://www.pinterest.com/eestudio0040"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#pinterest"></use></svg> <span class="username">eestudio0040</span></a></li>
+                    <li><a target="_blank" title="twitter" aria-label="twitter" href="https://www.twitter.com/esstudio_site"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#twitter"></use></svg> <span class="username">esstudio_site</span></a></li>
+                    <li><a target="_blank" title="youtube" aria-label="youtube" href="https://youtube.com/9Wereld"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#youtube"></use></svg> <span class="username">9Wereld</span></a></li>
+                    <li><a target="_blank" title="rss" aria-label="rss" href="https://esstudio.site/feed.xml"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="images/minima-social-icons.svg#rss"></use></svg></a></li>
+                </ul>
+            </div>
+        </ons-card>
 
     </ons-page>
 

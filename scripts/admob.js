@@ -24,7 +24,7 @@ function createBanner(){
             adId: admobid.banner,
             position: AdMob.AD_POSITION.BOTTOM_CENTER,
             adSize: 'SMART_BANNER',
-            isTesting:true, //Remove Before Release !!!!
+            //isTesting:true, //Remove Before Release !!!!
             autoShow: true 
     });}else{
         console.log('failed to create a banner')

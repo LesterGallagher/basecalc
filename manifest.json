@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Numeric-Calculator",
+  "short_name": "Numeric-Calculator",
+  "version": "com.EchoSierraStudio.NumericCalculator",
+  "description": "An easy to use application which converts to differenct numerical systems.",
+  "author": "EchoSierraStudio Team",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#f7c613"
+}
