@@ -16,6 +16,7 @@ $(document).ready(function () {
         $('#number').trigger('change');
     });
     $('#number').on('input', calcNumber);
+    $('#number').on('change', calcNumber);
     $('#rootBase').on('input', calcNumber);
 
     calcNumber();
