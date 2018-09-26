@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.EchoSierraStudio.NumericCalculator" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.EchoSierraStudio.NumericCalculator" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Numeric-Calculator</name>
     <description>An easy to use application which converts to differenct numerical systems.</description>
     <author email="polyismstudio@gmail.com" href="http://polyism.portfoliobox.net/">EchoSierraStudio Team</author>
@@ -14,4 +14,5 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="8.1" />
     <preference name="windows-phone-target-version" value="8.1" />
+    <preference name="StatusBarBackgroundColor" value="#D15E00" />
 </widget>

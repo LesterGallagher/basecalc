@@ -15,8 +15,8 @@ $(document).ready(function () {
         $(target).val((parseInt(oldVal) + 1).clamp(2, 36));
         $('#number').trigger('change');
     });
-    $('#number').on('change', calcNumber);
     $('#number').on('input', calcNumber);
+    $('#rootBase').on('input', calcNumber);
 
     calcNumber();
 });
